@@ -1,0 +1,53 @@
+=================================================================
+==13344==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x604000000080 at pc 0x7f9f39305490 bp 0x7ffd8e199da0 sp 0x7ffd8e199548
+READ of size 4294967294 at 0x604000000080 thread T0
+    #0 0x7f9f3930548f in __interceptor_memcpy ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:790
+    #1 0x55a62d1c0800 in inflate /zlib-1.2.12/inflate.c:769
+    #2 0x55a62d19f9cf in inf /zlib-1.2.12/inf1.c:269
+    #3 0x55a62d19fbef in main /zlib-1.2.12/inf1.c:283
+    #4 0x7f9f3909c082 in __libc_start_main ../csu/libc-start.c:308
+    #5 0x55a62d19e3ed in _start (/zlib-1.2.12/inf1+0x33ed)
+
+0x604000000080 is located 0 bytes to the right of 48-byte region [0x604000000050,0x604000000080)
+allocated by thread T0 here:
+    #0 0x7f9f39377c3e in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:163
+    #1 0x55a62d19f3ea in h2b /zlib-1.2.12/inf1.c:229
+    #2 0x55a62d19f7cf in inf /zlib-1.2.12/inf1.c:260
+    #3 0x55a62d19fbef in main /zlib-1.2.12/inf1.c:283
+    #4 0x7f9f3909c082 in __libc_start_main ../csu/libc-start.c:308
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:790 in __interceptor_memcpy
+Shadow bytes around the buggy address:
+  0x0c087fff7fc0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c087fff7fd0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c087fff7fe0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c087fff7ff0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c087fff8000: fa fa 00 00 00 00 00 fa fa fa 00 00 00 00 00 00
+=>0x0c087fff8010:[fa]fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c087fff8020: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c087fff8030: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c087fff8040: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c087fff8050: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c087fff8060: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==13344==ABORTING
+
