@@ -13,3 +13,5 @@ Found by EL of @intevydis
 
 
 Fixed in zlib develop branch https://github.com/madler/zlib/commit/eff308af425b67093bab25f80f1ae950166bece1
+
+Assigned CVE-2022-37434
