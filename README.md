@@ -14,5 +14,9 @@ Found by Evgeny Legerov of @intevydis
 
 Fixed in zlib develop branch https://github.com/madler/zlib/commit/eff308af425b67093bab25f80f1ae950166bece1
 
+This fix introduced NULL pointer dereference.
+
+Correct fix is here https://cgit.freebsd.org/src/commit/sys/contrib/zlib/inflate.c?id=2969066f73fc67a614144ac09b9f3f5291937fed
+
 
 https://www.cve.org/CVERecord?id=CVE-2022-37434
