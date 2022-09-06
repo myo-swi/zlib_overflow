@@ -11,7 +11,7 @@ $ docker run -it ubuntu:jammy
 
 ```
 $ apt update && apt install -y git gcc zlib1g-dev
-$ git clone https://github.com/ivd38/zlib_overflow.git
+$ git clone https://github.com/myo-swi/zlib_overflow
 $ cd zlib_overflow
 $ gcc -g -o inf1 inf1.c -fsanitize=address -lz
 $ ./inf1
