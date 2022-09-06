@@ -5,8 +5,8 @@
 #include "zlib.h"
 
 #define ZLIB_INTERNAL
-#include "inftrees.h"
-#include "inflate.h"
+//#include "inftrees.h"
+//#include "inflate.h"
 
 #define local static
 
@@ -279,6 +279,6 @@ local void inf(char *hex, char *what, unsigned step, int win, unsigned len,
     ret = inflateEnd(&strm);                   
     mem_done(&strm, what);
 }
-main () {
+void main () {
  inf("1f 8b 08 04 61 62 63 64 61 62 52 51 1f 8b 08 04 61 62 63 64 61 62 52 51 1f 8b 08 04 61 62 63 64 61 62 52 51 1f 8b 08 04 61 62 63 64 61 62 52 51", "wtf", 13, 47, 12, Z_OK);
 }
